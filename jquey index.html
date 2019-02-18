@@ -135,7 +135,14 @@
                           <small class="form-text text-muted" id="admingmail">We will never miss this form.</small>
                           </div>
                        </fieldset>
-        <fieldset class="form-group">
+                       <fieldset id="bike">
+                           <div class="form-check">
+                                <input type="checkbox" id="check-bike" value="bike">
+                                <label class="form-check-label">Bike available or not (if available, then select other check box)
+                            </label>
+                           </div>
+                       </fieldset>
+        <fieldset id="box-check">
                 <legend>Pets Medical</legend>
                 <div class="form-group">
                    <label>Has your pet been spayed?</label>
@@ -170,7 +177,7 @@
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" id="lion" value="lion"> LION
+                                <input type="checkbox" id="lion" value="lion" checked> LION
                             </label>
                         </div>
                         <div class="form-check">
@@ -262,7 +269,7 @@
         $(document).ready(function(){
  $('body').addClass('js');
  $('body').addClass('box-color');
-        });
+
         // form
         $('#pet-nme').append(' <input class="form-control" type="text" name="" id="pet-name" placeholder="pet name">');
         $('#pet-tpe').find('#like1').remove();
@@ -299,6 +306,26 @@
         '/' +
          $('#lion').val());
     });
+
+        //  one checkbox disable all disable
+
+            var $checkbox = $('#box-check').find('input[type=checkbox]');
+                $checkbox.prop('disabled', true);
+                  console.log('nyc');
+                  $('#check-bike').click(function(){
+                    var $toggle = $(this);
+                    if($toggle.prop('checked') === true)
+                    {
+                        $checkbox.prop('disabled', false);
+                    }
+
+                    else
+                    {
+                        $checkbox.prop('disabled', true); 
+                    }
+                  });
+        });
+
     </script>
 </body>
 </html>
