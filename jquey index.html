@@ -27,6 +27,20 @@
  {
      background-color: orange;
  }
+ .error
+ {
+     background-color:seagreen;
+     border: 1px solid #ff0000;
+     padding: 0.1em;
+     display: block;
+ }
+ .msg
+ {
+     background-color: purple;
+     border: 1px solid yellow;
+     padding: 0.1em;
+     display: block;
+ }
 </style>
 
 <div class="container">
@@ -63,6 +77,115 @@
     </fieldset>
 </form>
 </div>
+
+<!-- challange -->
+<div class="container mt-5">
+    <h1 class="text-center">Form challange</h1>
+    <form id="my-form">
+        <fieldset> 
+            <div class="form-group group1">
+              <label class="form-control-label" for="id">Your required name!</label>
+              <input class="form-control" type="text" name="name" id="id" placeholder="enter-name">
+            </div>
+            <div class="form-group group2">
+              <label class="form-control-label" for="id1">your color</label>
+              <input class="form-control" type="text" name="name" id="id1" placeholder="enter-colour">
+              <!-- <small class="form-text">i am here!</small> -->
+            </div>
+            <div class="form-group group3">
+                    <label class="form-control-label" for="id1">your number</label>
+                    <input class="form-control" type="text" name="name" id="id1" placeholder="(xxx)xxx-xxxx">
+                  </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- event handler -->
+
+<div class="container mt-5">
+        <h1 class="text-center">event handler</h1>
+        <form id="event-handler">
+            <fieldset> 
+                <div class="form-group ">
+                  <label class="form-control-label" for="id-name">event handler (click keyup change)</label>
+                  <input class="form-control" type="text" name="name" id="id-name" placeholder="enter-name">
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="id-color">your color</label>
+                  <input class="form-control" type="text" name="name" id="id-color" placeholder="enter-colour">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+
+    <!-- form data at console -->
+    <div class="container mt-5">
+        <h1 class="text-center">form data ata console</h1>
+        <form id="check-form">
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        <label class="form-control-label sr-only" for="adminname">Admin Name</label>
+                        <input class="form-control" type="text" name="name" id="adminname" value="Faizi bhatti" placeholder="Admin Name">
+                       </div>
+                       <div class="form-group">
+                           <label class="form-control-label" for="admingmail">Enter gmail</label>
+                           <input class="form-control" type="text" name="email" id="admingmail" value="faizibhatti102@gmail.com" placeholder="Enter gmail">
+                          <small class="form-text text-muted" id="admingmail">We will never miss this form.</small>
+                          </div>
+                       </fieldset>
+        <fieldset class="form-group">
+                <legend>Pets Medical</legend>
+                <div class="form-group">
+                   <label>Has your pet been spayed?</label>
+    
+                    <div class="form-check">
+                       <label class="form-check-label">
+                           <input type="radio" name="name" value="yes" id="yes" checked> Yes
+                      </label>
+                    </div>
+                       <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" name="name" id="no" value="yes"> No
+                        </label>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label>Has the pet had any of the following</label>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="dog" value="dog"> DOG
+                        </label>
+                    </div>
+                    <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" id="cat" value="cat"> CAT
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" id="cow" value="cow"> COW
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" id="lion" value="lion"> LION
+                            </label>
+                        </div>
+                        <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox"> BOTH
+                                </label>
+                            </div>
+                </div>      
+            </fieldset>
+    
+            <button class="btn btn-primary" type="submit">Submit</button>
+    
+        </form>  
+        
+    </div>
                          
     
 
@@ -145,7 +268,37 @@
         $('#pet-tpe').find('#like1').remove();
         
       var $copy =  $('#pet-nme').find('input:first').clone();
-      $("#pet-nme").prepend($copy);
+      $("#pet-nme").append($copy);
+// challange
+    $('#my-form').find('.group1').addClass('error');
+    $('#my-form').find('.group2').addClass('msg').append('<p> i am here </p>');
+
+    //event handler
+    $('#id-name').on('click', clickname);
+    function clickname(){
+        console.log("yes event working");
+        var $this = $(this);
+        $this.css('background-color','red');
+    }
+    // form data at consile
+    $('#check-form').submit(function(e){
+        e.preventDefault();
+        console.log('Name:' + $('#adminname').val());
+        console.log('Gmail:' + $('#admingmail').val());
+        console.log('pet medical:' + $('#yes').val());
+        console.log('pet type:' + $('#dog').val());
+
+        // checked box in console
+        console.log('Animal name:' +
+         $('#cat').prop('checked') +
+        '/' +
+         $('#cat').val());
+
+         console.log('Animal name:  ' +
+         $('#lion').prop('checked') +
+        '/' +
+         $('#lion').val());
+    });
     </script>
 </body>
 </html>
