@@ -41,6 +41,16 @@
      padding: 0.1em;
      display: block;
  }
+ .color-challange
+ {
+     background-color: silver;
+     display: block;
+ }
+ .img-width
+ {
+     width: 200px;
+     height: 200px;
+ }
 </style>
 
 <div class="container">
@@ -193,7 +203,69 @@
         </form>  
         
     </div>
+
+
+    <!-- full form practice -->
+    <div class="container" mt-5>
+        <h1 class="text-center">Form complete challange</h1>
+        <form id="main-form">
+            <fieldset id="input-field">
+                <legend><h1>Form Practice</h1></legend>
+                <div class="form-group d-block" id="check-color">
+                        <Label class="form-control-label" for="color">color</Label>
+                        <input class="form-control" type="text" name="" id="color" value="purple" placeholder="enter color">
+                     </div>
+                <div class="form-group">
+                   <Label class="form-control-label" for="admin">Admin Name</Label>
+                   <input class="form-control" type="text" name="" id="admin" value="Faizi bhatti" placeholder="enter admin name">
+                    </div>
+                <div class="form-group">
+                        <Label class="form-control-label" for="gmail">Gmail</Label>
+                        <input class="form-control" type="text" name="" id="gmail" value="FaiziBhatti102@gmail.com" placeholder="enter gmail">
+                     </div>
+                <div class="form-group">
+                        <Label class="form-control-label" for="address">Address</Label>
+                        <input class="form-control" type="text" name="" id="address" value="defence gaeden" placeholder="enter address">
+                    </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-check">
+                        <input type="checkbox" id="educator" value="educator">
+                        <label class="form-check-label" for="educator">Are you educator, then select organization</label>
+                </div>
+            </fieldset>
+            <fieldset id="checkbox">
+                <legend>Select organization</legend>
+                <div class="form-check">
+                        <input type="checkbox" id="university" value="university" checked>
+                    <label class="form-check-label" for="university">University</label>
+                </div>
+                <div class="form-check">
+                        <input type="checkbox" id="college" value="college">
+                    <label class="form-check-label" for="college">College</label>
+                </div>
+                <div class="form-check">
+                        <input type="checkbox" id="school" value="school">
+                    <label class="form-check-label" for="school">School</label>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-info mt-2 mb-5">Submit</button>
+        </form>
+    </div>
                          
+
+    <!-- color-box -->
+    <div class="container mt-4">
+        <h1 class="text-center">colorbox</h1>
+        <div id="photo-type">
+        <a style="text-decoration:none;" href="assests/css/image/FAIZI.jpg">
+        <img class="img-fluid img-width mb-2" src="assests/css/image/FAIZI.jpg" alt="">
+        <h4 class="ml-5">Faizi Bhatti</h4>
+        <p class="ml-5">$3.00 per stem</p>
+        
+        </a>
+        </a>
+    </div>
     
 
 
@@ -326,6 +398,47 @@
                   });
         });
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    </script>
+    <!-- form complete challange -->
+    <script>
+        $(document).ready(function(){
+            // color
+          $('#check-color').addClass('color-challange').append('<p> right color! </p>');
+            //    admin
+            $('#admin').click(function(){
+                 var $admin = $(this);
+                 console.log('Thats the right click');
+                 $admin.css('background-color', 'skyblue');
+            });
+            // collect console data
+            $('#main-form').submit(function(e){
+                  e.preventDefault();
+                  console.log('Color: ' + $('#color').val());
+                  console.log('Admin Name: ' + $('#admin').val());
+                  console.log('Color: ' + $('#gmail').val());
+                  console.log('Color: ' + $('#address').val());
+                  console.log('select organization: ' + $('#university').prop('checked') + '/' + $('#university').val());
+                  console.log('select organization: ' + $('#college').prop('checked') + '/' + $('#college').val());
+                  console.log('select organization: ' + $('#school').prop('checked') + '/' + $('#school').val());
+            });
+            // one disable all disable
+            var $select_checkbox = $('#checkbox').find('input[type=checkbox]');
+            $select_checkbox.prop('disabled', true);
+            $('#educator').click(function(){
+                var $toggle = $(this);
+                if($toggle.prop('checked')===true)
+            {
+                $select_checkbox.prop('disabled', false);
+            }
+            else
+            {
+                $select_checkbox.prop('disabled', true);
+            }
+            });
+            
+        });
     </script>
 </body>
 </html>
